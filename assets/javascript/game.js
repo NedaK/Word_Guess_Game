@@ -3,6 +3,7 @@
 var remainingGuesses = 0;
 var lettersGuessed = [];
 
+
 var userTextWord = document.getElementById("word");
 var userTextGuess = document.getElementById("guessLeft");
 var userTextLetters = document.getElementById("letters");
@@ -15,7 +16,9 @@ var words = ["wesley", "buttercup", "inigo", "inconcievable", "giant", "fezzik",
 
 
 // randomly pick an index from the word array and set to the variable pickedWord
-var pickedWord = words[Math.floor(Math.random() * words.length)];
+
+
+  var pickedWord = words[Math.floor(Math.random() * words.length)];
 console.log(pickedWord);
 
 // Set number of guesses to the amount of letters in the selected word
@@ -29,11 +32,14 @@ var answerArray = [];
  answerArray[i] = "_";
 }
 // display word to be guessed with --- on the screen
-// document.write("<h1>The word you are guessing is: " + answerArray.join(" ")+ "</h1>");
+//  document.write("<h1>The word you are guessing is: " + answerArray.join(" ")+ "</h1>");
 userTextWord.textContent = answerArray.join(" ");
+
+
 
     
 function resetGame(){
+
     
     lettersGuessed = [];
     pickedWord = words[Math.floor(Math.random() * words.length)];
@@ -59,7 +65,14 @@ function resetGame(){
         
         
         lettersGuessed.push(letter);
-        remainingGuesses--;
+        //remainingGuesses--;
+        // for(var a =0; a<answerArray.length; a++){
+            if (answerArray.indexOf(letter) === -1){
+             remainingGuesses--;
+
+          }
+        // }
+        
         
         
 
@@ -71,38 +84,23 @@ function resetGame(){
                 userTextWord.textContent = answerArray.join(" ");
                 console.log(answerArray.join(" "));
             
-            
-            } 
-            
-                // let unique = [...new Set(lettersGuessed)];
-                
-                // console.log(unique);
-                // console.log(lettersGuessed);
-                // console.log(remainingGuesses);
-                
-                
-
-                // userTextWord.textContent = answerArray.join(" ");
-                // userTextGuess.textContent = remainingGuesses;
-                // userTextLetters.textContent = unique.join(" ");
+            }          
         }
 
                 let unique = [...new Set(lettersGuessed)];
                 
-                // console.log(unique);
-                // console.log(lettersGuessed);
-                // console.log(remainingGuesses);
-                
-
                 userTextWord.textContent = answerArray.join(" ");
                 userTextGuess.textContent = remainingGuesses;
                 userTextLetters.textContent = unique.join(" ");
 
         if (remainingGuesses === 0 && answerArray.includes("_") === true){
-            // console.log("YOU LOST! ---- Starting new game");
-             alert("You Lost!! You were trying to guess " + pickedWord);
-           // document.write("<h1>YOU LOST!!! You were trying to guess </h1>" + "<h1>" pickedWord "</h1>");
-           
+            
+
+            var audio = new Audio('assets/images/inconceivable.mp3');
+            audio.play();
+             //alert("You Lost!! You were trying to guess " + pickedWord);
+            // document.write("<h1>YOU LOST!!! You were trying to guess the word " + pickedWord  + "</h1>");
+            
             setTimeout(resetGame, 2000);
             //resetGame();
         }
@@ -113,10 +111,17 @@ function resetGame(){
             userTextWord.textContent = answerArray.join(" ");
             // userTextGuess.textContent = remainingGuesses;
             //  userTextLetters.textContent = unique.join(" ");
-            alert("Winner! --- Starting new game!");
+
+            var audio = new Audio('assets/images/killed.mp3');
+            audio.play();
+            
             //alert("You Won! The word is " + pickedWord);
 
-            setTimeout(resetGame, 2000);
+
+            
+            setTimeout(alert("Winner! --- Starting new game!"), 15000);
+
+             setTimeout(resetGame, 5000);
             // resetGame();
         }
             
