@@ -17,7 +17,7 @@ body{
 }
 
 #transbox{
-    opacity: 0.5;
+    opacity: 0.6;
     filter: alpha(opacity=50); /* For IE8 and earlier */
     padding: 5px;
     margin: 30px;
@@ -25,6 +25,20 @@ body{
     border: 1px solid black;
     width: 40%;
     text-align: center;
+
+}
+#hidden{
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+    position: relative;
+    bottom: 60%;
+    margin: 40px;
+    float: right;
+    text-align: center;
+    width: 30%;
+    font-size: 54px;
+    color: red;
+    /* border: 13px solid black; */
 
 }
 /* #transbox p{
