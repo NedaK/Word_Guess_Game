@@ -68,11 +68,10 @@ function resetGame(){
         
     //decrement remaining guesses only if new letter is guessed
 
-            if (lettersGuessed.indexOf(letter) === -1){
+            if (lettersGuessed.indexOf(letter) === -1) {
                 lettersGuessed.push(letter);
                 remainingGuesses--;
-
-          }   
+            }   
     //check if guessed letter is in selected word.  Display on screen updated results.
 
         for(var l = 0; l < pickedWord.length; l++){
@@ -93,7 +92,7 @@ function resetGame(){
 
     //Lose game if no guesses left and answerArray still not full of letters
 
-        if (remainingGuesses === 0 && answerArray.includes("_") === true){
+        if (remainingGuesses === 0 && answerArray.includes("_") === true) {
             
 
             var audio = new Audio('assets/images/boo.mp3');
@@ -114,14 +113,15 @@ function resetGame(){
             var audio = new Audio('assets/images/inconceivable.mp3');
             audio.play();
             
-            hiddenText.innerHTML = "You Won! <br> ---New Game Starting---";
-            
+           hiddenText.innerHTML = "You Won! <br> ---New Game Starting---";
              setTimeout(resetGame, 5000);
             
         }
             
 
     }
+
+    
 
 
 
